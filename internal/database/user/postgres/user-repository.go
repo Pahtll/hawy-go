@@ -27,7 +27,7 @@ func (r *userRepository) GetAll() ([]models.User, error) {
 	return users, result.Error
 }
 
-func (r *userRepository) GetById(id uint64) (models.User, error) {
+func (r *userRepository) GetById(id uint) (models.User, error) {
 	var u models.User
 	result := r.DB.First(&u, id)
 	return u, result.Error
@@ -49,7 +49,7 @@ func (r *userRepository) Update(user models.User) error {
 	return result.Error
 }
 
-func (r *userRepository) Delete(id uint64) error {
+func (r *userRepository) Delete(id uint) error {
 	result := r.DB.Delete(&models.User{}, id)
 	return result.Error
 }

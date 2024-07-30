@@ -12,7 +12,7 @@ const (
 
 type User struct {
 	gorm.Model
-	ID           uint64 `gorm:"primaryKey;autoIncrement"`
+	ID           uint   `gorm:"primaryKey;autoIncrement"`
 	Username     string `gorm:"unique;not null;type:varchar(100);column:username"`
 	PasswordHash string
 	Email        string `gorm:"column:email;type:varchar(100);not null;unique"`

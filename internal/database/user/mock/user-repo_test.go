@@ -7,7 +7,7 @@ import (
 
 func TestStorage_GetAllFailed(t *testing.T) {
 	t.Parallel()
-	var s Storage
+	var s storage
 
 	t.Run("GetAll", func(t *testing.T) {
 		users, err := s.GetAll()
@@ -46,7 +46,7 @@ func TestStorage_GetAllFailed(t *testing.T) {
 
 func TestStorage_GetById(t *testing.T) {
 	t.Parallel()
-	var s Storage
+	var s storage
 
 	t.Run("GetById", func(t *testing.T) {
 		s.users = []models.User{
@@ -77,7 +77,7 @@ func TestStorage_GetById(t *testing.T) {
 
 func TestStorage_GetByUsername(t *testing.T) {
 	t.Parallel()
-	var s Storage
+	var s storage
 	t.Run("GetByUsername", func(t *testing.T) {
 		s.users = []models.User{
 			{
@@ -107,7 +107,7 @@ func TestStorage_GetByUsername(t *testing.T) {
 
 func TestStorage_Create(t *testing.T) {
 	t.Parallel()
-	var s Storage
+	var s storage
 	t.Run("Create", func(t *testing.T) {
 		err := s.Create(models.User{
 			Username:     "test",
@@ -124,7 +124,7 @@ func TestStorage_Create(t *testing.T) {
 
 func TestStorage_Update(t *testing.T) {
 	t.Parallel()
-	var s Storage
+	var s storage
 	t.Run("Update", func(t *testing.T) {
 
 		s.users = []models.User{
@@ -153,7 +153,7 @@ func TestStorage_Update(t *testing.T) {
 
 func TestStorage_DeleteFail(t *testing.T) {
 	t.Parallel()
-	var s Storage
+	var s storage
 	t.Run("Delete", func(t *testing.T) {
 		err := s.Delete(1)
 		if err != nil {
@@ -164,7 +164,7 @@ func TestStorage_DeleteFail(t *testing.T) {
 
 func TestStorage_Delete(t *testing.T) {
 	t.Parallel()
-	var s Storage
+	var s storage
 	t.Run("Delete", func(t *testing.T) {
 
 		s.users = []models.User{
