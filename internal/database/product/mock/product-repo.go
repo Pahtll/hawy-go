@@ -33,11 +33,11 @@ func (s *storage) GetById(id uint) (models.Product, error) {
 		return models.Product{}, fmt.Errorf("%s:Products not found", op)
 	}
 
-	if &s.products[id] == nil {
+	if &s.products[id-1] == nil {
 		return models.Product{}, fmt.Errorf("%s:Product not found", op)
 	}
 
-	return s.products[id], nil
+	return s.products[id-1], nil
 }
 
 func (s *storage) GetByTitle(title string) (models.Product, error) {
@@ -60,7 +60,7 @@ func (s *storage) Create(product models.Product) error {
 	const op = "database.product.mock.product-repository.Create"
 
 	if s.products == nil {
-		return fmt.Errorf("%s:Products not found", op)
+		s.products = []models.Product{}
 	}
 
 	for _, p := range s.products {
